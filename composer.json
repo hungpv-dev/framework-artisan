@@ -1,0 +1,33 @@
+{
+    "name": "asfy-code/artisan",
+    "type": "library",
+    "description": "Đây là 1 tool artisan do AsfyCode phát triển.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AsfyCode\\Artisan\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hungpv",
+            "email": "phamvanhung.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php -r \"require 'vendor/autoload.php'; require __DIR__ . '/bin/install.php';\""
+        ],
+        "post-update-cmd": [
+            "@php -r \"require 'vendor/autoload.php'; require __DIR__ . '/bin/install.php';\""
+        ]
+    },
+    "bin": [
+        "bin/artisan"
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
