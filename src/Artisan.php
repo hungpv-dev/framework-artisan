@@ -26,7 +26,7 @@ class Artisan
                 if($function){
                     $this->commands[$type]->handle($function,array_slice($argv, 2));
                 }else{
-                    $this->commands[$type]->handle();
+                    $this->commands[$type]->handle(array_slice($argv, 2));
                 }
             } else {
                 echo "Command không tồn tại: $command\n";
