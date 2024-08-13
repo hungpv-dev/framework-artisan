@@ -11,7 +11,7 @@ class Artisan
     public function __construct(){
         $this->commands = [
             'make' => new MakeFileCommand(),
-            'server' => new StartServer(),
+            'serve' => new StartServer(),
         ];   
     }
     public function run()
