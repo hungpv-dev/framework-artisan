@@ -7,7 +7,6 @@ use AsfyCode\Artisan\Command\{
     MakeFileCommand,
     HandleRoute,
 };
-include __DIR__ . '/../helper.php';
 class Artisan
 {
     protected $commands = [];
