@@ -7,6 +7,6 @@ $namespace = ['App\\','app/'];
 
 // Đường dẫn tới thư mục controller -> tính từ cấp thư mục namespace
 $controller =  'app/Controllers/';
-$model =  'app/Models/';
+$model =  'app/Model/';
 $trait =  'app/Traits/';
 $middleware =  'app/Middleware/';
