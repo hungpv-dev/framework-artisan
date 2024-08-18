@@ -4,37 +4,28 @@ namespace AsfyCode\Artisan\Command;
 
 class StartServer
 {
-    public function handle()
+    public function handle($args)
     {
-        echo "Đang khởi động server PHP...\n";
-
-        $command = 'php -S localhost:8000';
-        $descriptorspec = [
-            0 => ["pipe", "r"],
-            1 => ["pipe", "w"],
-            2 => ["pipe", "w"]
-        ];
-
-        $process = proc_open($command, $descriptorspec, $pipes);
-
-        if (is_resource($process)) {
-            // Lệnh đã chạy, thông báo thành công
-            logHelp('success', "Server PHP đã được khởi động tại http://localhost:8000");
-
-            // Đọc và hiển thị log của server nếu cần
-            while (!feof($pipes[1])) {
-                echo fgets($pipes[1]);
+        $port = 8000;
+        if(!empty($args)){
+            if(preg_match('/--port=(\d+)/', $args[0], $matches)){
+                $port = $matches[1];
             }
-
-            // Đóng các pipe sau khi hoàn thành
-            fclose($pipes[0]);
-            fclose($pipes[1]);
-            fclose($pipes[2]);
-
-            // Đợi quá trình kết thúc
-            proc_close($process);
+        }
+        function isPortAvailable($port) {
+            $connection = @fsockopen('localhost', $port, $errno, $errstr, 2);
+            if (is_resource($connection)) {
+                fclose($connection);
+                return false;
+            }
+            return true;
+        }
+        if (isPortAvailable($port)) {
+            $command = "php -S localhost:$port";
+            logHelp('success', "Server PHP đã được khởi động tại \e[1;34mhttp://localhost:$port\e[0m\n");
+            exec($command);
         } else {
-            logHelp('danger', "Không thể khởi động server PHP.");
+            logHelp('danger', "Cổng $port đã được sử dụng. Vui lòng chọn cổng khác bằng tham số \e[32m--port=????\e[0m");
         }
     }
 }

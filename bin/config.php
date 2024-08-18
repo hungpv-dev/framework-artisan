@@ -6,7 +6,7 @@ $basePath = __DIR__;
 $namespace = ['App\\','app/'];
 
 // Đường dẫn tới thư mục controller -> tính từ cấp thư mục namespace
-$controller =  'app/Controllers/';
-$model =  'app/Model/';
+$controller =  'app/Http/Controllers/';
+$model =  'app/Models/';
 $trait =  'app/Traits/';
-$middleware =  'app/Middleware/';
+$middleware =  'app/Http/Middleware/';

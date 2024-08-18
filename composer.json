@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "AsfyCode\\Artisan\\": "src/"
-        }
+        },
+        "files": [
+            "./helper.php"
+        ]
     },
     "authors": [
         {

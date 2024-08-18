@@ -2,9 +2,12 @@
 
 namespace AsfyCode\Artisan;
 
-use AsfyCode\Artisan\Command\MakeFileCommand;
-use AsfyCode\Artisan\Command\StartServer;
-
+use AsfyCode\Artisan\Command\{
+    StartServer,
+    MakeFileCommand,
+    HandleRoute,
+};
+include __DIR__ . '/../helper.php';
 class Artisan
 {
     protected $commands = [];
@@ -12,6 +15,7 @@ class Artisan
         $this->commands = [
             'make' => new MakeFileCommand(),
             'serve' => new StartServer(),
+            'route' => new HandleRoute(),
         ];   
     }
     public function run()
@@ -26,7 +30,7 @@ class Artisan
                 if($function){
                     $this->commands[$type]->handle($function,array_slice($argv, 2));
                 }else{
-                    $this->commands[$type]->handle();
+                    $this->commands[$type]->handle(array_slice($argv, 2));
                 }
             } else {
                 echo "Command không tồn tại: $command\n";
