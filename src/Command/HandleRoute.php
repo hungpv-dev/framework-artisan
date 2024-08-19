@@ -37,8 +37,8 @@ class HandleRoute
         // In bảng với màu sắc
         foreach ($routes as $row) {
             $method = $row['method'];
-            $path = $row['path'];
-            $name = '';
+            $path = $row['path'] == '/' ? $row['path'] : rtrim($row['path'],'/');
+            $name = $this->getNameRoute($path,$method);
             if(is_array($row['callback'])){
                 $class = $row['callback'][0];
                 $function = $row['callback'][1];
@@ -67,6 +67,15 @@ class HandleRoute
             $line = sprintf("%s %s%s", $leftPart, $dots, $rightPart);
             echo $line . PHP_EOL;
         }
+    }
+    function getNameRoute($path,$method){
+        $names = Route::$names;
+        foreach($names as $key => $item){
+            if($item['path'] == $path && $item['method'] == $method){
+                return $key;
+            }
+        }
+        return '';
     }
     function getMethodColor($method)
     {
