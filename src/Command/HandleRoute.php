@@ -9,12 +9,12 @@ class HandleRoute
 {
     public function handle($type, $args)
     {
+        // Sử lý theo tên hàm
         $this->$type($args);
     }
 
     public function list($args)
     {
-
         $routeServiceProvider = new RouteServiceProvider();
         $routeServiceProvider->boot();
         $routes = Route::$routes;
@@ -31,7 +31,6 @@ class HandleRoute
         define('CYAN', "\033[36m");
 
         $terminalWidth = (int) exec('tput cols');
-        
         function removeAnsiCodes($string) {
             return preg_replace('/\033\[[0-9;]*m/', '', $string);
         }
@@ -72,7 +71,7 @@ class HandleRoute
     function getNameRoute($path,$method){
         $names = Route::$names;
         foreach($names as $key => $item){
-            if($item['path'] == $path && $item['method'] == $method){
+            if(($item['path'] == $path) && ($item['method'] == $method)){
                 return $key;
             }
         }
