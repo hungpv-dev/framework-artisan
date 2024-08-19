@@ -31,6 +31,7 @@ class HandleRoute
         define('CYAN', "\033[36m");
 
         $terminalWidth = (int) exec('tput cols');
+        
         function removeAnsiCodes($string) {
             return preg_replace('/\033\[[0-9;]*m/', '', $string);
         }
