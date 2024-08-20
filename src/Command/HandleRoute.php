@@ -3,7 +3,7 @@
 namespace AsfyCode\Artisan\Command;
 
 use App\Providers\RouteServiceProvider;
-use App\Utils\Route;
+use AsfyCode\Utils\Route;
 
 class HandleRoute
 {

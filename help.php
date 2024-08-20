@@ -14,3 +14,7 @@ echo "\e[1;34mServer (Chạy)\e[0m\n";
 logType("serve", "Chạy server");
 logType("serve --port=????", "Chạy server với port ????");
 echo "\n";
+
+echo "\e[1;34mRoute (Đường dẫn)\e[0m\n";
+logType("route:list", "Xem danh sách route");
+echo "\n";
