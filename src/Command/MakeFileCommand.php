@@ -19,12 +19,12 @@ class MakeFileCommand
             logHelp('info',ucwords($type) . " đã tồn tại: $path \n");
             return;
         }
-        $content = $this->setContent($path);
+        $content = $this->setContent($path,$args);
         file_put_contents($path,$content);
         logHelp('success',"Tạo $type thành công: $path");
     }
 
-    public function setContent($path)
+    public function setContent($path,$args)
     {
         global $namespace;
         $startNamespace = $namespace[0];
@@ -38,6 +38,8 @@ class MakeFileCommand
             mkdir($folder, 0755, true);
         }
 
+        $agm = isset($args[1]) ? $args[1] : 0;
+
         $fileName = substr($path, $lastSlashPos + 1);
     
         $className = pathinfo($fileName, PATHINFO_FILENAME);
@@ -45,6 +47,7 @@ class MakeFileCommand
         $data = [
             'namespace' => $namespace,
             'className' => $className,
+            'agm' => $agm
         ];
 
         ob_start();

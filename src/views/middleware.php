@@ -3,8 +3,9 @@
 $classDefinition = <<<PHP
 <?php 
     namespace $namespace;
-
-    use App\Utils\Request as Request;
+    
+    use AsfyCode\Middleware\Middleware;
+    use AsfyCode\Utils\Request as Request;
     
     class $className extends Middleware
     {
