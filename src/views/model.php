@@ -8,7 +8,7 @@ $classDefinition = <<<PHP
     class $className extends Eloquent{
         protected \$table = 'table-name';
 
-        protected $guarded = [];
+        protected \$guarded = [];
     }
 
 PHP;
