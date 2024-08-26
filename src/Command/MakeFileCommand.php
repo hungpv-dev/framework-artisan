@@ -14,7 +14,11 @@ class MakeFileCommand
             return;
         }
         $name = $args[0];
-        $path = $$type . $name . '.php';
+        if($type == 'view'){
+            $path = $$type . $name . '.blade.php';
+        }else{
+            $path = $$type . $name . '.php';
+        }
         if (file_exists($path)) {
             logHelp('info',ucwords($type) . " đã tồn tại: $path \n");
             return;
