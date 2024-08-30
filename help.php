@@ -9,6 +9,8 @@ logType("make:model", "Tạo model");
 logType("make:middleware", "Tạo middleware");
 logType("make:trait", "Tạo trait");
 logType("make:view", "Tạo view");
+logType("make:view --h", "Tạo view hùng");
+logType("make:view --d", "Tạo view điệp");
 
 echo "\n";
 echo "\e[1;34mServer (Chạy)\e[0m\n";
